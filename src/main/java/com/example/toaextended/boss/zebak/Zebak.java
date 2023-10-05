@@ -270,18 +270,18 @@ public class Zebak implements PluginLifecycleComponent
 			case PROJECTILE_ID_MAGIC_ROCK_ENRAGED:
 				attackProjectiles.add(new AttackProjectile(Prayer.PROTECT_FROM_MAGIC,
 					ToaUtils.cyclesToTicks(projectile.getRemainingCycles()) + getProjectileTickCount()));
-				if (!EthanApiPlugin.isQuickPrayerActive(QuickPrayer.PROTECT_FROM_MISSILES)) {
+				if (!EthanApiPlugin.isQuickPrayerActive(QuickPrayer.PROTECT_FROM_MAGIC)) {
 					MousePackets.queueClickPacket();
-					WidgetPackets.queueWidgetActionPacket(1, 5046276, -1, 13); //quickPrayer range
+					WidgetPackets.queueWidgetActionPacket(1, 5046276, -1, 12); //quickPrayer mage
 				}
 				break;
 			case PROJECTILE_ID_RANGE_ROCK:
 			case PROJECTILE_ID_RANGE_ROCK_ENRAGED:
 				attackProjectiles.add(new AttackProjectile(Prayer.PROTECT_FROM_MISSILES,
 					ToaUtils.cyclesToTicks(projectile.getRemainingCycles()) + getProjectileTickCount()));
-				if (!EthanApiPlugin.isQuickPrayerActive(QuickPrayer.PROTECT_FROM_MAGIC)) {
+				if (!EthanApiPlugin.isQuickPrayerActive(QuickPrayer.PROTECT_FROM_MISSILES)) {
 					MousePackets.queueClickPacket();
-					WidgetPackets.queueWidgetActionPacket(1, 5046276, -1, 12); //quickPrayer mage
+					WidgetPackets.queueWidgetActionPacket(1, 5046276, -1, 13); //quickPrayer range
 				}
 				break;
 			case PROJECTILE_ID_JUG:
