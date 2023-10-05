@@ -23,7 +23,7 @@ import javax.inject.Inject;
 import java.util.*;
 
 @PluginDescriptor(
-        name = "<html>[<font color=\"#59D634\">P</font>] Leviathan</html>",
+        name = "Leviathan Helper",
         description = "Automatically switches your prayers during the Leviathan fight",
         tags = {"pajau", "ethan", "seshu"},
         enabledByDefault = false
@@ -36,7 +36,7 @@ public class Leviathan extends Plugin {
     @Inject
     Client client;
 
-    Projectile[] projectiles = new Projectile[10];
+    Projectile[] projectiles = new Projectile[5];
     int c = 0;
 
     boolean forceTab = false;
