@@ -71,16 +71,6 @@ public class Leviathan extends Plugin {
             }
         }
 
-        /* GET LEVIATHAN VARBIT VALUES
-        if (client.getVarbitValue() != 1) {
-            forceTab = false;
-            return;
-        }
-        if (client.getVarbitValue() != 1) {
-            forceTab = false;
-            return;
-        }*/
-
         if (forceTab) {
             client.runScript(915, 3);
             forceTab = false;
@@ -129,8 +119,4 @@ public class Leviathan extends Plugin {
     protected void startUp() {
         forceTab = false;
     }
-
-    /*private boolean isLeviathanVarbitSet() {
-        return client.getVarbitValue() == 1; // GET LEVIATHAN VARBIT VALUE
-    }*/
 }
