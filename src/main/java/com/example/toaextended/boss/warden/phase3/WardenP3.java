@@ -208,6 +208,7 @@ public class WardenP3 implements PluginLifecycleComponent
 				onNpcSpawned(new NpcSpawned(npc));
 			}
 		});
+		forceTab = false;
 	}
 
 	@Override

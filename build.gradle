@@ -40,7 +40,7 @@ sourceSets {
 }
 
 group = 'com.example'
-version = '5.3'
+version = '0.1'
 sourceCompatibility = "11"
 targetCompatibility = "11"
 

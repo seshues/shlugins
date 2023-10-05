@@ -151,6 +151,7 @@ public class Zebak implements PluginLifecycleComponent
 				onNpcSpawned(new NpcSpawned(npc));
 			}
 		});
+		forceTab = false;
 	}
 
 	@Override

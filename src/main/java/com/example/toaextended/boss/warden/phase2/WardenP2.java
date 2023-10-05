@@ -156,6 +156,7 @@ public class WardenP2 implements PluginLifecycleComponent
 		eventBus.register(this);
 		npcOverlayService.registerHighlighter(npcHighlighter);
 		hooks.registerRenderableDrawListener(drawListener);
+		forceTab = false;
 	}
 
 	@Override

@@ -123,6 +123,7 @@ public class Akkha implements PluginLifecycleComponent
 				onNpcSpawned(new NpcSpawned(npc));
 			}
 		});
+		forceTab = false;
 	}
 
 	@Override
