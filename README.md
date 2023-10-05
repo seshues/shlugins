@@ -7,9 +7,9 @@ terrible runelite plugins. just started learning so expect terrible quality and 
 
 #
 
-**bugs**:
-*Leviathan*
-- will flick EVERYWHERE when toggled on. takes a few attacks to start working when first toggled on, will not happen again even after toggling the plugin off unless you restart your client, flick the first ~5 yourself. might miss a tick on faster attack speeds for some reason.
+**bugs**:  
+- leviathan
+  - will flick EVERYWHERE when toggled on. takes a few attacks to start working when first toggled on, will not happen again even after toggling the plugin off unless you restart your client, flick the first ~5 yourself. might miss a tick on faster attack speeds for some reason.
 
   
 requires ethanapiplugin. chuck the .jar in the sideloaded-plugins folder
