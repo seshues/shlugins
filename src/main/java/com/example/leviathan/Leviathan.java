@@ -23,7 +23,7 @@ import javax.inject.Inject;
 import java.util.*;
 
 @PluginDescriptor(
-        name = "Leviathan Helper",
+        name = "[SH] Leviathan",
         description = "Automatically switches your prayers during the Leviathan fight",
         tags = {"pajau", "ethan", "seshu"},
         enabledByDefault = false

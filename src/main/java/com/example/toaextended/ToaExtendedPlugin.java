@@ -41,7 +41,7 @@ import net.runelite.client.plugins.PluginDescriptor;
 
 @Slf4j
 @PluginDescriptor(
-	name = "Toa Extended",
+	name = "[SH] ToA Extended",
 	description = "Extended plugin for Tombs of Amascut.",
 	tags = {"toa", "extended", "tombs"},
 	conflicts = {"Tombs of Amascut"},
