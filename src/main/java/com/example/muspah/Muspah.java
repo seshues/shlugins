@@ -37,21 +37,10 @@ public class Muspah extends Plugin {
     @Inject
     Client client;
 
-    Projectile[] projectiles = new Projectile[5];
-    int c = 0;
-
     boolean forceTab = false;
 
     Set<Integer> MUSPAH_IDS = Set.of(NpcID.PHANTOM_MUSPAH, NpcID.PHANTOM_MUSPAH_12078, NpcID.PHANTOM_MUSPAH_12079,
             NpcID.PHANTOM_MUSPAH_12080, NpcID.PHANTOM_MUSPAH_12082);
-
-    @Subscribe
-    public void onProjectileMoved(ProjectileMoved event) {
-        if (client.getGameCycle() < event.getProjectile().getStartCycle()) {
-            projectiles[c]=event.getProjectile();
-            c = (c+1)%5;
-        }
-    }
 
     @Subscribe
     public void onGameTick(GameTick event) {
