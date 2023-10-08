@@ -6,7 +6,6 @@ import com.example.leviathan.Leviathan;
 import com.example.toaprayers.ToAPrayers;
 import com.example.whisperer.Whisperer;
 import com.example.muspah.Muspah;
-//import com.example.toaextended.ToaExtendedPlugin;
 import net.runelite.client.RuneLite;
 import net.runelite.client.externalplugins.ExternalPluginManager;
 
