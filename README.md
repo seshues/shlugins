@@ -19,5 +19,9 @@ terrible runelite plugins. just started learning so expect terrible quality and 
 #
   
 requires ethanapiplugin. chuck the .jar in the sideloaded-plugins folder
-
 #
+
+**thanks to/credits**:  
+- ethan for ethanapiplugin, the utils and his gauntlet plugin.
+- pajau for his leviathan plugin that i (think i) improved.
+- rdutta for toa-extended.
