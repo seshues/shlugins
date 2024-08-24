@@ -480,6 +480,7 @@ public class BankItemWidget implements Widget {
         return actions;
     }
 
+
     @Override
     public Widget createChild(int index, int type) {
         return null;
@@ -497,6 +498,11 @@ public class BankItemWidget implements Widget {
 
     @Override
     public void setAction(int index, String action) {
+
+    }
+
+    @Override
+    public void clearActions() {
 
     }
 
@@ -792,6 +798,11 @@ public class BankItemWidget implements Widget {
 
     @Override
     public void setOnDragListener(Object... args) {
+
+    }
+
+    @Override
+    public void setOnScrollWheelListener(Object... args) {
 
     }
 

@@ -16,7 +16,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.example.PacketUtils.PacketReflection.client;
 
 public class ObjectPackets {
     @SneakyThrows
@@ -25,19 +24,19 @@ public class ObjectPackets {
         int ctrl = ctrlDown ? 1 : 0;
         switch (actionFieldNo) {
             case 1:
-                PacketReflection.sendPacket(PacketDef.OPLOC1, objectId, worldPointX, worldPointY, ctrl);
+                PacketReflection.sendPacket(PacketDef.getOpLoc1(), objectId, worldPointX, worldPointY, ctrl);
                 break;
             case 2:
-                PacketReflection.sendPacket(PacketDef.OPLOC2, objectId, worldPointX, worldPointY, ctrl);
+                PacketReflection.sendPacket(PacketDef.getOpLoc2(), objectId, worldPointX, worldPointY, ctrl);
                 break;
             case 3:
-                PacketReflection.sendPacket(PacketDef.OPLOC3, objectId, worldPointX, worldPointY, ctrl);
+                PacketReflection.sendPacket(PacketDef.getOpLoc3(), objectId, worldPointX, worldPointY, ctrl);
                 break;
             case 4:
-                PacketReflection.sendPacket(PacketDef.OPLOC4, objectId, worldPointX, worldPointY, ctrl);
+                PacketReflection.sendPacket(PacketDef.getOpLoc4(), objectId, worldPointX, worldPointY, ctrl);
                 break;
             case 5:
-                PacketReflection.sendPacket(PacketDef.OPLOC5, objectId, worldPointX, worldPointY, ctrl);
+                PacketReflection.sendPacket(PacketDef.getOpLoc5(), objectId, worldPointX, worldPointY, ctrl);
                 break;
         }
     }
@@ -68,7 +67,7 @@ public class ObjectPackets {
             p = new Point(object.getLocalLocation().getSceneX(), object.getLocalLocation().getSceneY());
         }
         LocalPoint lp = new LocalPoint(p.getX(), p.getY());
-        WorldPoint wp = WorldPoint.fromScene(client, lp.getX(), lp.getY(), object.getPlane());
+        WorldPoint wp = WorldPoint.fromScene(PacketReflection.getClient(), lp.getX(), lp.getY(), object.getPlane());
         int num = -1;
         for (String action : actions) {
             for (String action2 : actionlist) {
@@ -87,7 +86,7 @@ public class ObjectPackets {
     public static void queueWidgetOnTileObject(int objectId, int worldPointX, int worldPointY, int sourceSlot,
                                                int sourceItemId, int sourceWidgetId, boolean ctrlDown) {
         int ctrl = ctrlDown ? 1 : 0;
-        PacketReflection.sendPacket(PacketDef.OPLOCT, objectId, worldPointX, worldPointY, sourceSlot, sourceItemId,
+        PacketReflection.sendPacket(PacketDef.getOpLocT(), objectId, worldPointX, worldPointY, sourceSlot, sourceItemId,
                 sourceWidgetId, ctrl);
     }
 
@@ -100,7 +99,7 @@ public class ObjectPackets {
             p = new Point(object.getLocalLocation().getSceneX(), object.getLocalLocation().getSceneY());
         }
         LocalPoint lp = new LocalPoint(p.getX(), p.getY());
-        WorldPoint wp = WorldPoint.fromScene(client, lp.getX(), lp.getY(), object.getPlane());
+        WorldPoint wp = WorldPoint.fromScene(PacketReflection.getClient(), lp.getX(), lp.getY(), object.getPlane());
         queueWidgetOnTileObject(object.getId(), wp.getX(), wp.getY(), widget.getIndex(),
                 widget.getItemId(),
                 widget.getId(),

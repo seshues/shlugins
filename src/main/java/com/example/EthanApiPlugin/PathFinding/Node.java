@@ -9,12 +9,10 @@ public class Node {
     Node(WorldPoint data) {
         this.data = data;
     }
-
-    Node() {
+    Node(){
         this.data = null;
         this.previous = null;
     }
-
     Node(WorldPoint data, Node previous) {
         this.data = data;
         this.previous = previous;
@@ -28,7 +26,7 @@ public class Node {
         return previous;
     }
 
-    public void setNode(WorldPoint data, Node previous) {
+    public void setNode(WorldPoint data, Node previous){
         this.data = data;
         this.previous = previous;
     }

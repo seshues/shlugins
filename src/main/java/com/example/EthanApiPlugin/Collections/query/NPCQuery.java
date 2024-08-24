@@ -2,6 +2,8 @@ package com.example.EthanApiPlugin.Collections.query;
 
 import com.example.EthanApiPlugin.Collections.Players;
 import com.example.EthanApiPlugin.EthanApiPlugin;
+import com.example.EthanApiPlugin.PathFinding.GlobalCollisionMap;
+import com.example.EthanApiPlugin.Utility.WorldAreaUtility;
 import net.runelite.api.*;
 import net.runelite.api.coords.WorldArea;
 import net.runelite.api.coords.WorldPoint;
@@ -89,6 +91,25 @@ public class NPCQuery {
         return this;
     }
 
+    public NPCQuery withinBounds(WorldPoint min, WorldPoint max){
+        int x1 = min.getX();
+        int x2 = max.getX();
+        int y1 = min.getY();
+        int y2 = max.getY();
+
+        npcs = npcs.stream().filter(npc -> {
+            int x3 = npc.getWorldLocation().getX();
+            int y3 = npc.getWorldLocation().getY();
+
+            if (x3 > Math.max(x1, x2) || x3 < Math.min(x1, x2)) {
+                return false;
+            }
+
+            return y3 <= Math.max(y1, y2) && y3 >= Math.min(y1, y2);
+        }).collect(Collectors.toList());
+        return this;
+    }
+
     public NPCQuery indexIs(int index) {
         npcs = npcs.stream().filter(npcs -> npcs.getIndex() == index).collect(Collectors.toList());
         return this;
@@ -169,5 +190,15 @@ public class NPCQuery {
             return npc.getComposition();
         }
         return npc.getTransformedComposition();
+    }
+
+    public Optional<NPC> nearestByPath() {
+        return npcs.stream().min(Comparator.comparingInt(o -> {
+            var path = GlobalCollisionMap.findPath(o.getWorldLocation());
+            if (path == null) {
+                return Integer.MAX_VALUE;
+            }
+            return path.size();
+        }));
     }
 }

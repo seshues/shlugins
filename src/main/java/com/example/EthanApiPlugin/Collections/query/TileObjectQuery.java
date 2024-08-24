@@ -1,11 +1,15 @@
 package com.example.EthanApiPlugin.Collections.query;
 
+import com.example.EthanApiPlugin.EthanApiPlugin;
+import com.example.EthanApiPlugin.PathFinding.GlobalCollisionMap;
+import com.example.EthanApiPlugin.Utility.WorldAreaUtility;
 import net.runelite.api.Client;
 import net.runelite.api.ObjectComposition;
 import net.runelite.api.TileObject;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.client.RuneLite;
 
+import javax.swing.text.html.Option;
 import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -28,6 +32,22 @@ public class TileObjectQuery {
                 }).collect(Collectors.toList());
         return this;
     }
+//    public TileObjectQuery withActions(String... actions){
+//tileObjects =
+//                tileObjects.stream().filter(tileObject -> {
+//                    ObjectComposition objectComposition = getObjectComposition(tileObject);
+//                    if (objectComposition == null)
+//                        return false;
+//                    String[] objectActions = objectComposition.getActions();
+//                    for (String action : actions) {
+//                        if (Arrays.stream(objectActions).filter(Objects::nonNull).anyMatch(a -> a.equalsIgnoreCase(action))) {
+//                            return true;
+//                        }
+//                    }
+//                    return false;
+//                }).collect(Collectors.toList());
+//        return this;
+//    }
 
     public TileObjectQuery withId(int id) {
         tileObjects = tileObjects.stream().filter(tileObject -> tileObject.getId() == id).collect(Collectors.toList());
@@ -54,6 +74,25 @@ public class TileObjectQuery {
 
     public TileObjectQuery withinDistance(int distance) {
         tileObjects = tileObjects.stream().filter(tileObject -> tileObject.getWorldLocation().distanceTo(client.getLocalPlayer().getWorldLocation()) <= distance).collect(Collectors.toList());
+        return this;
+    }
+
+    public TileObjectQuery withinBounds(WorldPoint min, WorldPoint max){
+        int x1 = min.getX();
+        int x2 = max.getX();
+        int y1 = min.getY();
+        int y2 = max.getY();
+
+        tileObjects = tileObjects.stream().filter(tileObject -> {
+            int x3 = tileObject.getWorldLocation().getX();
+            int y3 = tileObject.getWorldLocation().getY();
+
+            if (x3 > Math.max(x1, x2) || x3 < Math.min(x1, x2)) {
+                return false;
+            }
+
+            return y3 <= Math.max(y1, y2) && y3 >= Math.min(y1, y2);
+        }).collect(Collectors.toList());
         return this;
     }
 
@@ -99,6 +138,19 @@ public class TileObjectQuery {
 
     public Optional<TileObject> nearestToPlayer() {
         return tileObjects.stream().min(Comparator.comparingInt(o -> client.getLocalPlayer().getWorldLocation().distanceTo(o.getWorldLocation())));
+    }
+
+    public Optional<TileObject> nearestByPath() {
+        return tileObjects.stream().min(Comparator.comparingInt(o -> {
+            List<WorldPoint> adjacentTiles = WorldAreaUtility.objectInteractableTiles(o);
+            return adjacentTiles.stream().distinct().mapToInt(worldPoint -> {
+                List<WorldPoint> path = GlobalCollisionMap.findPath(worldPoint);
+                if (path == null) {
+                    return Integer.MAX_VALUE;
+                }
+                return path.size();
+            }).min().orElse(Integer.MAX_VALUE);
+        }));
     }
 
     public Optional<TileObject> nearestToPoint(WorldPoint point) {

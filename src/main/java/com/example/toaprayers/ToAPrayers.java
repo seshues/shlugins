@@ -69,6 +69,13 @@ public class ToAPrayers extends Plugin {
     @Subscribe
     private void onProjectileMoved(final ProjectileMoved event)
     {
+        if (client.getLocalPlayer().isDead() || client.getLocalPlayer().getHealthRatio() == 0) {
+            return;
+        }
+        if (client.getGameState() != GameState.LOGGED_IN) {
+            return;
+        }
+
         final Projectile projectile = event.getProjectile();
 
         if (projectile.getRemainingCycles() <= 0)

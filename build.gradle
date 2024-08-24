@@ -9,6 +9,7 @@ repositories {
         url = 'https://repo.runelite.net'
     }
     mavenCentral()
+    gradlePluginPortal()
     jcenter()
 }
 
@@ -23,7 +24,7 @@ dependencies {
     testImplementation group: 'net.runelite', name: 'jshell', version: runeLiteVersion
     implementation 'org.json:json:20230227'
     implementation 'org.roaringbitmap:RoaringBitmap:0.9.44'
-    implementation("com.google.archivepatcher:archive-patch-applier:1.0.4")
+    implementation("net.runelite:archive-patcher:1.0")
     implementation("org.benf:cfr:0.152")
 	    implementation group: 'com.google.inject.extensions', name: 'guice-multibindings', version: '4.1.0', {
         exclude group: 'com.google.inject'
