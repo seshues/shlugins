@@ -92,6 +92,11 @@ public class Muspah extends Plugin {
                     MousePackets.queueClickPacket();
                     WidgetPackets.queueWidgetActionPacket(1, 5046276, -1, 23); //quickPrayer mystic might
                 }
+
+                if (!EthanApiPlugin.isQuickPrayerActive(QuickPrayer.PROTECT_FROM_MELEE)) {
+                    MousePackets.queueClickPacket();
+                    WidgetPackets.queueWidgetActionPacket(1, 5046276, -1, 14); //quickPrayer melee
+                }
             }
 
             if (EthanApiPlugin.isQuickPrayerEnabled()) {
@@ -127,10 +132,10 @@ public class Muspah extends Plugin {
         if (!MUSPAH_IDS.contains(npc.getId())) {
             return;
         }
-        if (e.getActor().getAnimation() == 9920 && !EthanApiPlugin.isQuickPrayerActive(QuickPrayer.PROTECT_FROM_MELEE)) {
+        /*if (e.getActor().getAnimation() == 9920 && !EthanApiPlugin.isQuickPrayerActive(QuickPrayer.PROTECT_FROM_MELEE)) {
             MousePackets.queueClickPacket();
             WidgetPackets.queueWidgetActionPacket(1, 5046276, -1, 14); //quickPrayer melee
-        }
+        }*/
         if (e.getActor().getAnimation() == 9922 && !EthanApiPlugin.isQuickPrayerActive(QuickPrayer.PROTECT_FROM_MISSILES)) {
             MousePackets.queueClickPacket();
             WidgetPackets.queueWidgetActionPacket(1, 5046276, -1, 13); //quickPrayer range
