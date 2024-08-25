@@ -9,8 +9,6 @@ repositories {
         url = 'https://repo.runelite.net'
     }
     mavenCentral()
-    gradlePluginPortal()
-    jcenter()
 }
 
 def runeLiteVersion = 'latest.release'

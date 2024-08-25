@@ -34,7 +34,7 @@ import java.util.*;
 
 @PluginDescriptor(
         name = "[SH] ToA Auto Prayers",
-        description = "Automatically switches in Tombs of Amascut",
+        description = "Automatically switches your prayers in Tombs of Amascut",
         tags = {"seshu"},
         enabledByDefault = false
 )
